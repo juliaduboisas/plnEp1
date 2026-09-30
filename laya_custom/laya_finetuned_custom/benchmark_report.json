@@ -1,0 +1,13 @@
+{
+  "benchmark": "train.csv",
+  "model": "Laya (Custom Fine-Tune 2xT4)",
+  "n_cases": 2010,
+  "metrics": {
+    "accuracy": 0.4468,
+    "soft_accuracy": 0.3563,
+    "brier_score": 0.6381,
+    "ece": 0.0338,
+    "latency_p50_ms": 36.8,
+    "kl_divergence": 1.0555
+  }
+}
