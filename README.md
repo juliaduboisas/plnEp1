@@ -1,87 +1,82 @@
-# plnEp1
+# PLN - Classificação da Clareza de Respostas do SIC
 
-## Pipelines com sklearn.pipeline.Pipeline e joblib
-### Passo a passo para pipeline usando sklearn.pipeline.Pipeline
+## Grupo
+- Ana Clara Segal Vidal Pessanha - Nº USP: 14677464
+- Catarina Macedo Scabelli - Nº USP: 14215555
+- Giovanna Almeida Albuquerque - Nº USP: 13687515
+- Júlia Du Bois Araújo Silva - Nº USP: 14584360
 
-1. Testar o modelo que você quer colocar na pipeline
+## Sobre o projeto
 
-2. Construir a pipeline
+Este projeto foi desenvolvido para a disciplina de **Processamento de Linguagem Natural (PLN)** e tem como objetivo classificar respostas de **Sistemas de Informação ao Cidadão (SIC)** de acordo com seu nível de clareza.
 
-Exemplo de preparação de pipeline puxado de baselineModel.ipynb, onde é criada uma pipeline para um Dummy Classifier:
+Durante o desenvolvimento, foram exploradas diferentes abordagens de processamento e classificação de textos. A descrição detalhada dos modelos testados, experimentos e resultados pode ser encontrada no relatório do projeto.
 
-```
-pipelineDummy = Pipeline(
-    steps=[
-        ("clf", DummyClassifier(strategy='most_frequent', random_state = 100,
-constant = None))
-    ]
-)
-```
+<!-- --- -->
 
-Se a pipeline exigir algum tipo específico de transformação dos dados (encoding etc), fazer um passo de preparação como:
+## Estrutura do repositório
 
-```
-preprocessor = ColumnTransformer(
-    transformers=[
-        ("num", StandardScaler(), numeric),
-        ("cat", OneHotEncoder(drop="first"), categorical),
-    ],
-    remainder="drop"
-)
-```
-
-E adicionar um passo 'prep' na pipeline:
-
-```
-pipelineDummy = Pipeline(
-    steps=[
-        ("prep", preprocessor),
-        ("clf", DummyClassifier(strategy='most_frequent', random_state = 100,
-constant = None))
-    ]
-)
+```text
+plnEp1/
+├── data/
+│   ├── train.csv
+│   ├── train_noDuplicates.csv
+│   ├── train_noSameClassDuplicates.csv
+│   └── test1.xlsx
+│
+├── baseline/
+│   └── ...
+│
+├── modelos_testados/
+│   └── ...
+│
+├── modelo_final/
+│   └── ...
+│
+├── resultados/
+│   └── ...
+│
+└── README.md
 ```
 
-3. Usando joblib, salvar a pipeline na pasta correta:
+### `data/`
 
-```
-import joblib
+Contém os conjuntos de dados utilizados no projeto, incluindo os dados de treinamento originais, os dados sem duplicatas preparados pelo grupo e o conjunto de teste fornecido para classificação.
 
-joblib.dump(pipelineDummy, "pipelines/pipelineDummy.pkl")
-```
+### `baseline/`
 
-### Colocando um modelo na com pipeline
+Contém os notebooks e arquivos relacionados aos modelos utilizados como **baseline** (Dummy Classifier e TF-IDF + Regressão Logística) para comparação.
 
-1. Rode a pipeline sobre x_train e y_train para treinar o modelo
+### `modelos_testados/`
 
-```
-pipelineDummy.fit(x_train, y_train)
-```
+Contém os notebooks das diferentes abordagens exploradas durante o desenvolvimento do projeto.
 
-2. Rode 'predict' sobre x_test para usar o modelo
+### `modelo_final/`
 
-```
-y_pred = pipelineDummy.predict(x_test)
-```
+Contém o notebook e os arquivos relacionados ao **modelo selecionado como solução final**.
 
-3. Compare com y_test e pegue as métricas para avaliar o modelo
+### `resultados/`
 
-```
-score = f1_score(y_test, y_pred, average='macro')
-print("\n\nMaj =====>{:2.2f}\n\n".format(score).replace(".", ","))
-```
+Contém os resultados gerados pelo modelo final, incluindo o conjunto de teste rotulado após a classificação.
 
-### Pegando um modelo de uma pipeline
-1. Pegue o modelo com joblib
+<!-- --- -->
 
-```
-import joblib
+## Modelo final
 
-model = joblib.load("pipelines/pipelineDummy.pkl")
-```
+O modelo final selecionado para a classificação das respostas foi:
 
-2. Use esse modelo para criar a previsão desejada
+**TF-IDF + sublinear_tf + Regressão Logística**
 
-```
-prediction = model.predict(x_test)
-```
+O treinamento, a avaliação e a aplicação do modelo podem ser encontrados no notebook disponível em: `modelo_final/`
+
+Após o treinamento e a avaliação, o modelo foi utilizado para classificar as respostas presentes no conjunto `test1.xlsx`.
+
+O arquivo resultante está disponível em: `resultados/test1_rotulado.xlsx`
+
+<!-- Os resultados detalhados dos experimentos e a justificativa para a escolha do modelo final estão apresentados no relatório do projeto. -->
+
+<!-- --- -->
+
+## Relatório
+
+A descrição completa da metodologia, modelos avaliados, experimentos realizados, métricas obtidas e da escolha do modelo final está disponível no **relatório do projeto**, bem como as intruções para reprodução do resultado.

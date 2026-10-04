@@ -1,5 +1,5 @@
 {
-  "benchmark": "train.csv",
+  "benchmark": "data/train.csv",
   "model": "Laya (Custom Fine-Tune 2xT4)",
   "n_cases": 2010,
   "metrics": {
