@@ -12,7 +12,7 @@ Este projeto foi desenvolvido para a disciplina de **Processamento de Linguagem 
 
 Durante o desenvolvimento, foram exploradas diferentes abordagens de processamento e classificação de textos. A descrição detalhada dos modelos testados, experimentos e resultados pode ser encontrada no relatório do projeto.
 
----
+<!-- --- -->
 
 ## Estrutura do repositório
 
@@ -59,7 +59,7 @@ Contém o notebook e os arquivos relacionados ao **modelo selecionado como solu�
 
 Contém os resultados gerados pelo modelo final, incluindo o conjunto de teste rotulado após a classificação.
 
----
+<!-- --- -->
 
 ## Modelo final
 
@@ -73,18 +73,10 @@ Após o treinamento e a avaliação, o modelo foi utilizado para classificar as 
 
 O arquivo resultante está disponível em: `resultados/test1_rotulado.xlsx`
 
-Os resultados detalhados dos experimentos e a justificativa para a escolha do modelo final estão apresentados no relatório do projeto.
+<!-- Os resultados detalhados dos experimentos e a justificativa para a escolha do modelo final estão apresentados no relatório do projeto. -->
 
----
-
-## Execução
-
-Para reproduzir os experimentos, é necessário ter Python e as bibliotecas utilizadas nos notebooks instaladas.
-
-[COLOCAR AS INSTRUÇÕES PARA REPRODUÇÃO AQUI]
-
----
+<!-- --- -->
 
 ## Relatório
 
-A descrição completa da metodologia, dos modelos avaliados, dos experimentos realizados, das métricas e da escolha do modelo final está disponível no **relatório do projeto**.
+A descrição completa da metodologia, modelos avaliados, experimentos realizados, métricas obtidas e da escolha do modelo final está disponível no **relatório do projeto**, bem como as intruções para reprodução do resultado.
